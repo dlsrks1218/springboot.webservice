@@ -28,11 +28,11 @@ buildscript {
     }
 }
 
-// 자바와 스프링부트 사용에 필수 플러그인
+// 자바와 스프링 부트 사용에 필수 플러그인
 apply plugin : 'java'
 apply plugin : 'eclipse'
 apply plugin : 'org.springframework.boot'
-// 스프링부트의 의존성 관리 플러그인ㅅ
+// 스프링 부트 의존성 관리 플러그인
 apply plugin : 'io.spring.dependency-management'
 
 
@@ -47,4 +47,11 @@ repositories {
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('junit:junit')
+    //compile 'org.projectlombok:lombok'은 생성자 생성 오류를 일으킴, 아래와 같이 변경
+    // 출처 : https://projectlombok.org/setup/gradle
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 }
